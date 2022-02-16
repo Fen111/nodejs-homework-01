@@ -21,8 +21,9 @@ async function getContactById(contactId) {
   return contact;
 }
 
-function removeContact(contactId) {
+async function removeContact(contactId) {
   const contacts = await readContent();
+  return contacts.filter((c) => c !== contactId);
 }
 
 async function addContact(name, email, phone) {

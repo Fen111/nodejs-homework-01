@@ -1,6 +1,11 @@
 const { Command } = require("commander");
 const { get } = require("https");
-const { listContacts, addContact, getContactById } = require("./contact");
+const {
+  listContacts,
+  addContact,
+  getContactById,
+  removeContact,
+} = require("./contact");
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
@@ -13,7 +18,6 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
@@ -36,7 +40,8 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      // ... id
+      const newContacts = await removeContact(id);
+      console.table(newContacts);
       break;
 
     default:
