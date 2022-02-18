@@ -16,18 +16,35 @@ async function listContacts() {
 }
 
 async function getContactById(contactId) {
-  const contacts = await readContent();
+  const contacts = await listContacts();
   const contact = contacts.find((c) => c.id === contactId);
+  if (!contact) {
+    return null;
+  }
   return contact;
 }
 
-async function removeContact(contactId) {
-  const contacts = await readContent();
-  return contacts.filter((c) => c !== contactId);
-}
+// async function removeContact(contactId) {
+//   const contacts = await readContent();
+//   return contacts.filter((c) => c !== contactId);
+// }
+
+const removeContact = async (contactId) => {
+  const contacts = await listContacts();
+  const idx = contacts.findIndex((c) => c.id === contactId);
+  if (idx === -1) {
+    return null;
+  }
+  const newContacts = contacts.filter((_, index) => index !== idx);
+  await fs.writeFile(
+    path.join(__dirname, "contacts.json"),
+    JSON.stringify(newContacts)
+  );
+  return newContacts;
+};
 
 async function addContact(name, email, phone) {
-  const contacts = await readContent();
+  const contacts = await listContacts();
   const newContact = { id: randomUUID(), name, email, phone };
   contacts.push(newContact);
   await fs.writeFile(
