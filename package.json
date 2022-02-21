@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fen111/nodejs-homework-01-.git"
+    "url": "git+https://github.com/Fen111/nodejs-homework-01.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Fen111/nodejs-homework-01-/issues"
+    "url": "https://github.com/Fen111/nodejs-homework-01/issues"
   },
-  "homepage": "https://github.com/Fen111/nodejs-homework-01-#readme",
+  "homepage": "https://github.com/Fen111/nodejs-homework-01#readme",
   "dependencies": {
     "commander": "9.0.0"
   },
