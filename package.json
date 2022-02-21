@@ -1,7 +1,7 @@
 {
   "name": "nodejs-homework-01",
   "version": "1.0.0",
-  "description": "",
+  "description": "Link to screenshot link to the page with the result of the commands: https://monosnap.com/file/YlglwAq4rLvpe0uJqhujewtI10PLx6",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -20,5 +20,6 @@
   "homepage": "https://github.com/Fen111/nodejs-homework-01-#readme",
   "dependencies": {
     "commander": "9.0.0"
-  }
+  },
+  "devDependencies": {}
 }
