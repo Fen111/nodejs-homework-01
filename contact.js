@@ -3,11 +3,10 @@ const path = require("path");
 const { randomUUID } = require("crypto");
 const ct = require("./contacts.json");
 
+const pathContacts = path.join(__dirname, "contacts.json");
+
 const readContent = async () => {
-  const content = await fs.readFile(
-    path.join(__dirname, "contacts.json"),
-    "utf-8"
-  );
+  const content = await fs.readFile(pathContacts, "utf-8");
   return JSON.parse(content);
 };
 
@@ -31,10 +30,7 @@ const removeContact = async (contactId) => {
     return null;
   }
   const newContacts = contacts.filter((_, index) => index !== idx);
-  await fs.writeFile(
-    path.join(__dirname, "contacts.json"),
-    JSON.stringify(newContacts)
-  );
+  await fs.writeFile(pathContacts, JSON.stringify(newContacts));
   return newContacts;
 };
 
@@ -42,10 +38,7 @@ async function addContact(name, email, phone) {
   const contacts = await listContacts();
   const newContact = { id: randomUUID(), name, email, phone };
   contacts.push(newContact);
-  await fs.writeFile(
-    path.join(__dirname, "contacts.json"),
-    JSON.stringify(contacts, null, 2)
-  );
+  await fs.writeFile(pathContacts, JSON.stringify(contacts, null, 2));
   return newContact;
 }
 
